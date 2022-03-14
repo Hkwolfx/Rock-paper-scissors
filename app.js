@@ -6,15 +6,21 @@ const possibleChoices = document.querySelectorAll("button");
 let userChoice;
 let computerChoice;
 
+// FOR EACH CHOICE DO ...
+
 possibleChoices.forEach((possibleChoice) =>
-  possibleChoice.addEventListener("click", (e) => {
-    userChoice = e.target.id;
-    userChoiceDisplay.innerHTML = userChoice;
-    generateComputerChoice();
-    getResult();
-  })
+  possibleChoice.addEventListener("click", myEvent)
 );
 
+// myEvent played when EventListener detects a click
+function myEvent(e) {
+  userChoice = e.target.id;
+  userChoiceDisplay.innerHTML = userChoice;
+  generateComputerChoice();
+  getResult();
+}
+
+// GENERATE A INTEGER BASED ON CHOICES LENGHT ( = 3 )
 function generateComputerChoice() {
   const randomNumber = Math.floor(Math.random() * possibleChoices.length) + 1; // so 3 choices
   // +1 to avoid starting at 0
@@ -32,6 +38,7 @@ function generateComputerChoice() {
   computerChoiceDisplay.innerHTML = computerChoice;
 }
 
+// THE RESULT
 function getResult() {
   if (computerChoice === userChoice) {
     result = "its a draw!";
